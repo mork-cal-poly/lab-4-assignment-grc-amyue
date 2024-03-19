@@ -1,5 +1,7 @@
 let clicked = false;
-let y = 200;
+let cloudX = 200;
+let cloudY = 200;
+let dinoX = 190;
 let s = 0.5;
 
 function setup() {
@@ -14,14 +16,18 @@ function setup() {
 function draw() {
   background(131, 187, 203);
   drawBackground(200, 400);
-  drawDino (190, 400);
+  drawDino (dinoX, 400);
 
   if(clicked) {
-    y = y < 400 ? y + 1 : 400;
+    cloudY = cloudY < 400 ? cloudY + 1 : 400;
     s = s < 1 ? s + 0.01: 1;
   }
-  
-  drawCloud(200, y, s);
+  drawCloud(cloudX, cloudY, s);
+
+  if(cloudY == 400) {
+    dinoX = dinoX - 1.5;
+    cloudX = cloudX - 1.5;
+  }
 }
 
 function drawBackground(x, y) {
