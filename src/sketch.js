@@ -1,3 +1,5 @@
+let clicked = false;
+
 function setup() {
   // These lines are fitting our canvas
   // where we want in the DOM
@@ -11,6 +13,9 @@ function draw() {
   background(131, 187, 203);
   drawBackground(200, 400);
   drawDino (200, 400, 0.5);
+  if (clicked) {
+    drawCloud(200, 400, 0.5);
+  }
 }
 
 function drawBackground(x, y) {
@@ -83,4 +88,43 @@ function drawDino(x, y, s) {
   ellipse(-105, -300, 8);
   
   pop();
+}
+
+function drawCloud(x, y, s) {
+  push();
+  translate(x, y);
+  scale(s);
+  fill(222, 236, 240);
+  noStroke();
+  
+  ellipse(0, -175, 200, 100);
+  ellipse(-100, -180, 50);
+  ellipse(-88, -203, 30);
+  ellipse(-60, -208, 45, 30);
+  ellipse(-35, -210, 55);
+  ellipse(-15, -220, 30);
+  ellipse(0, -220, 60, 20);
+  ellipse(45, -210, 50);
+  ellipse(65, -205, 45, 30);
+  ellipse(85, -190, 30);
+  ellipse(100, -175, 20, 30);
+  ellipse(85, -158, 35);
+  ellipse(65, -140, 45, 30);
+  ellipse(45, -145, 50);
+  ellipse(0, -130, 60, 20);
+  ellipse(-25, -130, 30);
+  ellipse(-50, -150, 55);
+  ellipse(-85, -150, 45, 30);
+
+  pop();
+}
+
+function mouseClicked() {
+ if (mouseX > 100 && 
+     mouseX < 300 && 
+     mouseY > 215 && 
+     mouseY < 325)
+  {
+    clicked = !clicked;
+  }
 }
