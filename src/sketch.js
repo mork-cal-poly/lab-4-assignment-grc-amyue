@@ -1,4 +1,6 @@
 let clicked = false;
+let y = 200;
+let s = 0.5;
 
 function setup() {
   // These lines are fitting our canvas
@@ -12,10 +14,14 @@ function setup() {
 function draw() {
   background(131, 187, 203);
   drawBackground(200, 400);
-  drawDino (200, 400, 0.5);
-  if (clicked) {
-    drawCloud(200, 400, 0.5);
+  drawDino (190, 400);
+
+  if(clicked) {
+    y = y < 400 ? y + 1 : 400;
+    s = s < 1 ? s + 0.01: 1;
   }
+  
+  drawCloud(200, y, s);
 }
 
 function drawBackground(x, y) {
@@ -44,10 +50,10 @@ function drawBackground(x, y) {
   pop();
 }
 
-function drawDino(x, y, s) {
+function drawDino(x, y) {
   push();
   translate(x, y);
-  scale(s);
+  //scale(s);
   fill(91, 139, 99);
   noStroke();
   
@@ -117,13 +123,21 @@ function drawCloud(x, y, s) {
   ellipse(-85, -150, 45, 30);
 
   pop();
+
+  if (clicked) {
+    if(drawCloud.y < 300) {
+      drawCloud.y = drawCloud.y + 1;
+    } else {
+      drawCloud.y = 0;
+    }
+  }
 }
 
 function mouseClicked() {
- if (mouseX > 100 && 
-     mouseX < 300 && 
-     mouseY > 215 && 
-     mouseY < 325)
+ if (mouseX > 150 && 
+     mouseX < 250 && 
+     mouseY > 72 && 
+     mouseY < 128)
   {
     clicked = !clicked;
   }
