@@ -16,6 +16,7 @@ function setup() {
 function draw() {
   background(131, 187, 203);
   drawBackground(200, 400);
+  drawBear ();
   drawDino (dinoX, 400);
 
   if(clicked) {
@@ -137,6 +138,39 @@ function drawCloud(x, y, s) {
       drawCloud.y = 0;
     }
   }
+}
+
+function drawBear() {
+  push();
+  translate(270, 255);
+  
+  // bear 
+  fill(148, 118, 97);
+  noStroke(); 
+
+  scale(0.5);
+  translate()
+    ellipse(-150, -45, 50, 65); // Body
+    ellipse(-175, -110, 25, 25); // left ear
+    ellipse(-125, -110, 25, 25); // right ear
+    ellipse(-150, -90, 50, 50); // head
+    ellipse(-165, -65, 40, 20); // left arm
+    ellipse(-135, -65, 40, 20); // right arm
+    ellipse(-162, -20, 40, 20); // left leg
+    ellipse(-138, -20, 40, 20); // right leg
+    
+    fill(0);
+    noStroke();
+    ellipse(-160, -95, 8, 8); // left eye
+    ellipse(-140, -95, 8, 8); // right eye
+    ellipse(-150, -90, 8, 5); // nose
+    
+    fill(148, 118, 97);
+    stroke(2);
+    arc(-153, -88, 6, 5, 0, PI);
+    arc(-146, -88, 6, 5, 0, PI);
+  
+  pop();
 }
 
 function mouseClicked() {
